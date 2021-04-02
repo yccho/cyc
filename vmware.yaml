@@ -1,0 +1,15 @@
+- name: Create a virtual machine on given ESXi hostname
+  community.vmware.vmware_guest:
+    hostname: "180.210.14.124"
+    username: "administrator@vsphere.local"
+    password: "devSTACK1!"
+    folder: /cyc
+    name: test_vm_0001
+    state: poweredon
+    guest_id: centos64Guest
+    # This is hostname of particular ESXi server on which user wants VM to be deployed
+    esxi_hostname: "180.210.14.125"
+    wait_for_ip_address: true
+    wait_for_ip_address_timeout: 600
+  delegate_to: localhost
+  register: deploy_vm
